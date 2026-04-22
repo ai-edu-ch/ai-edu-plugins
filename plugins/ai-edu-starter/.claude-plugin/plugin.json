@@ -1,7 +1,7 @@
 {
   "name": "ai-edu-starter",
-  "version": "0.2.0",
-  "description": "18 Skills, 1 Subagent und CLAUDE.md-Template für Schweizer KMU im täglichen Betrieb - Offerten, Reklamationen, Finanzen, HR, Content, Planung. Deutsch (de-CH).",
+  "version": "0.3.0",
+  "description": "19 Skills (inkl. Council), 1 Subagent und CLAUDE.md-Template für Schweizer KMU - Offerten, Reklamationen, Finanzen, HR, Content, Planung, Strategie-Second-Opinion.",
   "author": {
     "name": "Reto Lutz",
     "url": "https://ai-edu.ch"
@@ -9,5 +9,5 @@
   "homepage": "https://ai-edu.ch",
   "repository": "https://github.com/retolutz/ai-edu-plugins",
   "license": "MIT",
-  "keywords": ["kmu", "schweiz", "de-ch", "productivity", "starter-kit", "offerte", "reklamation", "cashflow", "hr"]
+  "keywords": ["kmu", "schweiz", "de-ch", "productivity", "starter-kit", "council", "second-opinion"]
 }
