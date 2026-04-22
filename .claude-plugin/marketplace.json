@@ -1,0 +1,23 @@
+{
+  "name": "ai-edu",
+  "owner": {
+    "name": "Reto Lutz"
+  },
+  "metadata": {
+    "description": "Plugin-Marketplace von ai-edu.ch für Schweizer KMU, die Claude Code produktiv einsetzen wollen.",
+    "version": "0.2.0"
+  },
+  "plugins": [
+    {
+      "name": "ai-edu-starter",
+      "source": "./plugins/ai-edu-starter",
+      "description": "18 Skills, 1 Subagent und CLAUDE.md-Template für Schweizer KMU - Offerten, Reklamationen, Finanzen, HR, Content, Planung.",
+      "version": "0.2.0",
+      "author": {
+        "name": "Reto Lutz"
+      },
+      "license": "MIT",
+      "keywords": ["kmu", "schweiz", "de-ch", "productivity", "starter-kit"]
+    }
+  ]
+}
