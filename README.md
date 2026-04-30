@@ -7,16 +7,16 @@ Plugin-Marketplace von [ai-edu.ch](https://ai-edu.ch) für Schweizer KMU, die Cl
 In Claude Code:
 
 ```
-/plugin marketplace add retolutz/ai-edu-plugins
+/plugin marketplace add ai-edu-ch/ai-edu-plugins
 ```
 
 Danach einzelne Plugins installieren (siehe Liste unten).
 
 ## Enthaltene Plugins
 
-### `ai-edu-starter` (v0.2.0)
+### `ai-edu-starter` (v0.3.0)
 
-18 Skills, 1 Subagent und CLAUDE.md-Template für den KMU-Alltag - Offerten, Reklamationen, Finanzen, HR, Content, Planung.
+19 Skills, 1 Subagent und CLAUDE.md-Template für den KMU-Alltag - Offerten, Reklamationen, Finanzen, HR, Content, Planung, Strategie-Second-Opinion.
 
 Installation:
 
@@ -33,6 +33,7 @@ Skills im Überblick:
 - **Marketing und Content**: blog-skizze, linkedin-post
 - **HR und Team**: jobausschreibung, feedback-vorbereitung, bewerbung-einordnen
 - **Planung und Sales**: quartalsziele, cold-outreach
+- **Strategie (Advanced)**: council (Multi-LLM-Second-Opinion, benötigt MCP-Setup)
 
 Subagent: kundenkorrespondenz (Schweizer B2B-Briefe, E-Mails, Mahnungen).
 

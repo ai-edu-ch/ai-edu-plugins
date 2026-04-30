@@ -9,7 +9,7 @@ Teil des [ai-edu.ch](https://ai-edu.ch) Plugin-Marketplaces.
 In Claude Code:
 
 ```
-/plugin marketplace add retolutz/ai-edu-plugins
+/plugin marketplace add ai-edu-ch/ai-edu-plugins
 /plugin install ai-edu-starter@ai-edu
 ```
 
