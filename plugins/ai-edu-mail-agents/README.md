@@ -83,6 +83,12 @@ Detaillierte READMEs mit Beispiel-Prompts, Input-Schemas, Output-Beispielen und 
 - [`docs/mail-wochenrecap.md`](docs/mail-wochenrecap.md)
 - [`docs/mail-vip-radar.md`](docs/mail-vip-radar.md)
 
+## Beispiel-Datensatz
+
+In [`examples/`](examples/) liegt ein anonymisierter, fiktiver 2-Wochen-Mail-Korpus (`inbox.csv`, `sent.csv`, `vips.csv`), mit dem du alle vier Agents end-to-end testen kannst, ohne eigene Mails zu exportieren. Persona: Anna Beispiel, KMU-Beraterin Zuerich. 234 Inbox-Mails, 94 Sent-Mails, 25 VIPs, eingebaute Eskalations-Treppe (Lieferant-Reklamation, FINMA-Anfrage, Hausanwalt-Mahnung), erfuellte Threads (Offerte Q3, Workshop) und ca. 25 Spam-Mails.
+
+Anleitung: [`examples/README.md`](examples/README.md).
+
 ## Lizenz
 
 MIT - siehe [LICENSE](../../LICENSE) im Repo-Root.
