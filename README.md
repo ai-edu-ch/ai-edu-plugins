@@ -39,6 +39,27 @@ Subagent: kundenkorrespondenz (Schweizer B2B-Briefe, E-Mails, Mahnungen).
 
 Details: [plugins/ai-edu-starter/README.md](plugins/ai-edu-starter/README.md)
 
+### `ai-edu-mail-agents` (v0.1.0)
+
+Vier produktive Subagents für Mail-Bulk-Analyse aus Outlook- oder Gmail-CSV-Exports. Schreibt nichts, versendet nichts - liefert strukturierte Markdown-Outputs, die du in Outlook weiterverwendest.
+
+Installation:
+
+```
+/plugin install ai-edu-mail-agents@ai-edu
+```
+
+Subagents im Überblick:
+
+| Agent | Zweck |
+|---|---|
+| `mail-triage` | Inbox-CSV in 4 Buckets sortieren plus Eskalations-Alarm |
+| `mail-antwort-entwurf` | Antwort-Entwürfe im Stil deiner Sent-Mails |
+| `mail-wochenrecap` | Wochenstatus aus Sent + Inbox - Zusagen, offene Punkte, Latenz |
+| `mail-vip-radar` | VIP-Liste vs. Inbox - SLA-Verletzungen + Eskalations-Risiko |
+
+Details: [plugins/ai-edu-mail-agents/README.md](plugins/ai-edu-mail-agents/README.md)
+
 ## Sprache
 
 Alle Plugins sind auf Deutsch (de-CH) ausgelegt, mit Schweizer Zahl- und Datumskonventionen:
