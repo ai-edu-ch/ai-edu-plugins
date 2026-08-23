@@ -41,7 +41,7 @@ Details: [plugins/ai-edu-starter/README.md](plugins/ai-edu-starter/README.md)
 
 ### `ai-edu-mail-agents` (v0.1.0)
 
-Vier Subagents für Mail-Bulk-Analyse aus Outlook- oder Gmail-CSV-Exports. Schreibt nichts in die Mailbox, versendet nichts - liefert strukturierte Markdown-Outputs, die du in Outlook weiterverwendest. Mit synthetischem Beispiel-Datensatz (Persona "Anna Beispiel") zum Ausprobieren.
+Vier Subagents für Mail-Bulk-Analyse aus Outlook- oder Gmail-CSV-Exports. Sie arbeiten nur auf den exportierten Dateien und haben keinen Zugang zur Mailbox - Ergebnis sind strukturierte Markdown-Outputs, die du in Outlook weiterverwendest. Mit synthetischem Beispiel-Datensatz (Persona "Anna Beispiel") zum Ausprobieren.
 
 | Agent | Zweck |
 |---|---|

@@ -33,7 +33,7 @@
     {
       "name": "ai-edu-mail-agents",
       "source": "./plugins/ai-edu-mail-agents",
-      "description": "Vier Subagents für Mail-Bulk-Analyse aus Outlook- oder Gmail-CSV - Triage, Antwort-Entwürfe im Eigenstil, Wochenrecap, VIP-Radar. Versendet nichts.",
+      "description": "Vier Subagents für Mail-Bulk-Analyse aus Outlook- oder Gmail-CSV - Triage, Antwort-Entwürfe im Eigenstil, Wochenrecap, VIP-Radar. Arbeiten nur auf exportierten Dateien, ohne Zugang zur Mailbox.",
       "version": "0.1.0",
       "author": {
         "name": "Reto Lutz"

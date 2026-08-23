@@ -22,6 +22,13 @@ Nach einem adversarialen Review vor dem Merge zusätzlich korrigiert:
 - **`ai-edu-mcp-basis`**: Werkzeugnamen aus einem Plugin tragen ein Präfix (`mcp__plugin_ai-edu-mcp-basis_context7__*`), das README nannte die kurzen Namen; "headless" war falsch (beide Browser-Server öffnen ein sichtbares Fenster); Versionen für Pinning ergänzt.
 - Tabellen ohne Trennzeile in den Output-Vorlagen, Grammatik- und Umlautfehler, Datumsangaben zwischen CHANGELOG und Plugin-README angeglichen.
 
+Nachgezogen nach einer zweiten Prüfrunde:
+
+- **Domains gemessen statt angenommen**: `dig` über jede Domain im Korpus. Sechs vermeintlich erfundene Namen waren real registriert, vier davon mit MX-Record - darunter der Ersatzname, den die erste Runde eingeführt hatte. Alle sechs ersetzt, Prüfregel im README festgehalten. Es lösen jetzt nur noch die vier bewusst behaltenen Behörden-Domains auf.
+- **"Versendet nichts"** war eine Garantie, die die Konfiguration nicht trägt: die Agents haben `Bash` (für `wc`, `iconv`, CSV-Parsing). Die Zusage nennt jetzt, was sie tatsächlich hält - kein Mailbox-Zugang, kein SMTP/IMAP/Graph-Werkzeug, Versandverbot im Prompt - und wie man daraus eine harte Grenze macht.
+- **SLA-Semantik**: Agent-Definition sagte "24h werktags", die Doku "Kalenderzeit". Das ändert jede Latenzzahl. Jetzt durchgehend Kalenderzeit, mit Hinweispflicht bei Wochenenden.
+- **Ein Dateinamens-Schema** für die Antwort-Entwürfe (`entwurf-NN-<slug>.md`) statt drei.
+
 ## 0.3.0 - 2026-04-23
 
 - `ai-edu-starter` 0.3.0: Council-Skill als "Advanced" ergänzt. Nachtrag 30.04.2026: Marketplace-URL und Skill-Zählung korrigiert.

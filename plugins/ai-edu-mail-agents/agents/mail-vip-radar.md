@@ -30,7 +30,7 @@ Du übernimmst **nie**:
 2. **Inbox-CSV** (Pflicht) und optional **Sent-CSV** (für Antwort-Status).
 3. **Optional**:
    - Zeitraum (Default: letzte 30 Tage).
-   - Default-SLA für VIPs ohne expliziten SLA (Default: 24h werktags).
+   - Default-SLA für VIPs ohne expliziten SLA-Wert in der Liste: 24h. Alle SLA-Werte sind **Kalenderzeit**, nicht Werktage - über das Wochenende läuft die Uhr weiter.
 
 ## VIP-Listen-Format (Empfehlung)
 
@@ -116,7 +116,7 @@ Datei: `vip-radar-<YYYY-MM-DD>.md` im aktuellen Ordner.
 ## Stolperfallen
 
 - **Domain-Match-Falle**: `@firma.ch` matched auch `newsletter@firma.ch` - bei Domain-VIPs explizit Newsletter-Subdomain ausschliessen oder den Match auf bestimmte Personen-Adressen begrenzen.
-- **SLA-Werktage**: 8h-SLA über Wochenende ist faktisch länger. Werktag-Logik einbauen oder im Output als "Kalenderzeit" markieren.
+- **SLA über das Wochenende**: gerechnet wird Kalenderzeit, ein 8h-SLA ist am Samstag also schnell verletzt. Im Output kennzeichnen, wenn die Wartezeit überwiegend auf ein Wochenende oder einen Feiertag fällt - die Zahl bleibt, die Einordnung ändert sich.
 - **Auto-Replies**: "Out-of-office"-Antworten in sent zählen nicht als echte Antwort.
 - **Conversation-Threading**: ohne `Conversation-ID` Match heuristisch (Subject-basiert), im Output explizit so markieren.
 - **VIP-Listen-Stale**: Wenn die VIP-Liste >6 Monate alt ist, Hinweis ausgeben "Liste prüfen, ggf. veraltet".

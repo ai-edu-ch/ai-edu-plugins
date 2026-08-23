@@ -63,7 +63,7 @@ mail-antwort-entwurf, Stilreferenz sent.csv, Tonalität verhandelnd-respektvoll,
 
 ## Output
 
-Eine Datei pro Entwurf: `entwurf-NN-<kurz-slug>.md`. Beispiel-Auszug:
+Eine Datei pro Entwurf: `entwurf-NN-<slug>.md`. Beispiel-Auszug:
 
 ```markdown
 # Antwort-Entwurf: Re: Offerte Q3 - Rückfrage

@@ -1,7 +1,7 @@
 {
   "name": "ai-edu-mail-agents",
   "version": "0.1.0",
-  "description": "Vier produktive Subagents für Mail-Bulk-Analyse aus Outlook- oder Gmail-CSV-Exports - Triage, Antwort-Entwürfe im Eigenstil, Wochenrecap, VIP-Radar. Schreibt nichts, versendet nichts.",
+  "description": "Vier Subagents für Mail-Bulk-Analyse aus Outlook- oder Gmail-CSV-Exports - Triage, Antwort-Entwürfe im Eigenstil, Wochenrecap, VIP-Radar. Arbeiten nur auf exportierten Dateien, ohne Zugang zur Mailbox.",
   "author": {
     "name": "Reto Lutz",
     "url": "https://ai-edu.ch"
@@ -9,5 +9,15 @@
   "homepage": "https://ai-edu.ch",
   "repository": "https://github.com/ai-edu-ch/ai-edu-plugins",
   "license": "MIT",
-  "keywords": ["kmu", "schweiz", "de-ch", "outlook", "gmail", "email", "triage", "agents", "productivity"]
+  "keywords": [
+    "kmu",
+    "schweiz",
+    "de-ch",
+    "outlook",
+    "gmail",
+    "email",
+    "triage",
+    "agents",
+    "productivity"
+  ]
 }
