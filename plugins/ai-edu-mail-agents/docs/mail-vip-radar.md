@@ -5,7 +5,7 @@ Matched eine Inbox-CSV gegen eine **VIP-Liste** und identifiziert, wer wie lange
 ## Wann einsetzen
 
 - **A-Kunden-Schutz** - Solo-Beratung mit 5-10 wichtigsten Mandaten, niemand soll unbemerkt warten.
-- **Behörden-Radar** - FINMA, EDOEB, AHV, KESB, Schulleitung - Pflicht-Antwort-Domains nicht übersehen.
+- **Behörden-Radar** - FINMA, EDÖB, AHV, KESB, Schulleitung - Pflicht-Antwort-Domains nicht übersehen.
 - **Lieferanten-Radar** - Top-10-Lieferanten, Liefer-Termine, Reklamationen, Mahnstufen.
 - **Eskalations-Frühwarnung** - dritte Erinnerung von einem A-Kontakt? Anwalts-Mail im Posteingang?
 
@@ -117,10 +117,13 @@ Eine Markdown-Datei `vip-radar-<datum>.md`. Beispiel-Auszug:
 
 | # | VIP | Kategorie | Eingegangen | Wartezeit | SLA | Quelle |
 |---|-----|-----------|-------------|-----------|-----|--------|
+| 1 | brunner@grosskunde-ag.ch | A-Kunde | 06.05. 14:20 | 41h | 48h | inbox.csv #58 |
 
 ## Niedrigrisiko - im SLA
 
 | # | VIP | Eingegangen | SLA-Rest |
+|---|-----|-------------|----------|
+| 1 | fischer@beratungsmandat-d.ch | 07.05. 16:05 | 26h |
 
 ## Erledigt
 
@@ -149,7 +152,7 @@ Empfohlene SLA-Werte (Erfahrungswerte, nicht verbindlich):
 | A-Kunde, Domain-weit | 24h |
 | Hausanwalt | 24h |
 | Behörde, Aufsicht | 48h |
-| Behörde, Datenschutz/EDOEB | 72h |
+| Behörde, Datenschutz/EDÖB | 72h |
 | Lieferant-Top10 | 24h |
 | B-Kunde / C-Kunde | 48h-72h |
 

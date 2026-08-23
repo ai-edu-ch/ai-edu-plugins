@@ -110,7 +110,7 @@ Ja, im Prompt explizit angeben: *"Nutze diese Buckets statt der Defaults: A-Kund
 Im aktuellen Arbeitsordner (dort, wo du Claude Code gestartet hast).
 
 **Werden sensible Mails irgendwohin geschickt?**
-Nein. Der Agent läuft ausschliesslich auf deinem Rechner gegen Anthropic's API. Es gibt keinen Drittanbieter-Stack.
+Kein Mail-Versand, kein Drittanbieter, keine Kopie ausserhalb deines Ordners. Aber: der Agent läuft in Claude Code, also gehen die Zeilen, die er liest, als Teil des Prompts an die Anthropic-API - wie jede Datei, die du Claude zeigst. Wenn Mail-Inhalte dein Haus nicht verlassen dürfen, exportiere nur Absender, Betreff und Datum ohne Body-Spalte; die Triage funktioniert damit gröber, aber sie funktioniert.
 
 ## Agent-Definition
 

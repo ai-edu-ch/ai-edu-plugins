@@ -80,6 +80,8 @@ Datei: `triage-<YYYY-MM-DD>.md` im aktuellen Arbeitsordner.
 ## Antwort bis Wochenende (N)
 
 | # | Absender | Betreff | Empfangen | Begründung |
+|---|----------|---------|-----------|-------------|
+| 1 | ... | ... | ... | ... |
 
 ## FYI (N)
 

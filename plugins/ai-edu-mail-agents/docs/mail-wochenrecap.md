@@ -67,7 +67,7 @@ mail-wochenrecap mit Domain-Gruppierung aus inbox.csv und sent.csv.
 
 ### Zusätzlich
 
-- **Eskalations-Signale** (Mahnstufen, dritte Erinnerung, CC-Vorgesetzt:e).
+- **Eskalations-Signale** (Mahnstufen, dritte Erinnerung, CC an Vorgesetzte).
 - **Latenz-Statistik** - Median + 90. Perzentil deiner Antwortzeit, Top-3 langsamste Threads.
 
 ## Output
@@ -91,17 +91,19 @@ Eine Markdown-Datei `wochenrecap-KW<NN>.md`. Beispiel-Auszug:
 - **30.04.** an `claudia@grosskunde.ch`: "Offerte folgt am Mittwoch" → erfüllt am 02.05. (sent.csv #14).
 - ...
 
-## Offene Zusagen (3)
+## Offene Zusagen (2)
 
 | # | An | Versprochen | Inhalt | Fällig | Status |
 |---|----|-------------|--------|--------|--------|
 | 1 | mueller@lieferant-b.ch | 28.04. | Reklamations-Antwort | 02.05. | **überfällig** |
 | 2 | weber@kunde-c.ch | 04.05. | Termin-Vorschlag | 09.05. | offen |
 
-## Offene Anfragen an dich (4)
+## Offene Anfragen an dich (2)
 
 | # | Von | Eingegangen | Betreff | Tage offen |
 |---|-----|-------------|---------|-----------|
+| 1 | brunner@grosskunde-ag.ch | 06.05. | Offerte Q3 - Rückfrage | 2 |
+| 2 | aufsicht@finma.ch | 04.05. | Erinnerung Auskunftsersuchen | 4 |
 
 ## Eskalations-Alarm
 
@@ -140,7 +142,7 @@ Eine Markdown-Datei `wochenrecap-KW<NN>.md`. Beispiel-Auszug:
 ## FAQ
 
 **Kann ich den Wochenrecap automatisch jeden Freitag laufen lassen?**
-Mit Claude Code's Scheduling-Feature (`/loop` oder Cron) ja, aber nur wenn dein Mail-Export automatisiert ist. Manueller Export-Schritt aus Outlook bleibt.
+Mit der Scheduling-Funktion von Claude Code (`/loop` oder Cron) ja, aber nur wenn dein Mail-Export automatisiert ist. Manueller Export-Schritt aus Outlook bleibt.
 
 **Was, wenn ich Outlook nicht nutze?**
 Gmail-Export funktioniert genauso - Spalten-Mapping ist anders, der Agent fragt nach.

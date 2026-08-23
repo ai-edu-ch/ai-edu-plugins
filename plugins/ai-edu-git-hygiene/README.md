@@ -29,7 +29,9 @@ Voraussetzung: `jq` (macOS: `brew install jq`). Fehlt es, lassen die Hooks alles
 
 Blockiert er, erklärt die Meldung den Ausweg: eigener Worktree, `git -C <worktree> commit`.
 
-**Abschalten.** `CLAUDE_ALLOW_SHARED_COMMIT=1 git commit ...` lässt den Commit bewusst durch. Der Hook ist ein Stolperdraht, keine Sicherheitsgrenze.
+**Abschalten.** `CLAUDE_ALLOW_SHARED_COMMIT=1 git commit ...` lässt den Commit bewusst durch - als Befehls-Präfix oder als Variable in der Umgebung des Hooks. Der Hook ist ein Stolperdraht, keine Sicherheitsgrenze.
+
+**Was er nicht kann.** Der Hook liest den Befehlstext, er parst keine Shell. Gequotete Abschnitte werden vor der Prüfung neutralisiert, damit `echo "a; git commit b"` keinen Fehlalarm auslöst und `git -c user.name="A B" commit` trotzdem erkannt wird. Aber: mehrzeilige Befehle prüft er nur in der ersten Zeile (bewusst, wegen Heredocs), und ein Commit, den ein aufgerufenes Skript im Inneren absetzt, sieht er nicht. Verwaiste Worktree-Einträge (`prunable`) zählt er nicht mit, sonst blockierte er dauerhaft, nachdem jemand ein Worktree-Verzeichnis gelöscht hat, ohne `git worktree prune` zu laufen.
 
 ## Hook 2: Warnung bei liegengelassenen Dateien
 
@@ -39,7 +41,7 @@ Blockiert er, erklärt die Meldung den Ausweg: eigener Worktree, `git -C <worktr
 
 **Was der Hook tut.** Am Ende jeder Antwort zählt er `git status --porcelain`-Einträge mit `??`. Liegen mehr als 12 unversionierte Einträge herum, gibt er einen Hinweis mit fünf Beispielen aus. Er blockiert nichts. Bewusst gitignorierte Ordner (`node_modules`, `dist`) zählen nicht.
 
-**Schwelle ändern.** `CLAUDE_UNTRACKED_LIMIT=30` hebt sie an, `CLAUDE_UNTRACKED_LIMIT=0` schaltet den Hook ab.
+**Schwelle ändern.** `CLAUDE_UNTRACKED_LIMIT=30` hebt sie an, `CLAUDE_UNTRACKED_LIMIT=0` schaltet den Hook ab. Ein nicht-numerischer Wert wird still ignoriert (Rückfall auf 12), damit kein Shell-Fehler nach jeder Antwort erscheint. Das JSON baut `jq`, deshalb überstehen auch Dateinamen mit Umlauten und Leerzeichen die Ausgabe.
 
 ## Optional: macOS-Mitteilungen
 
@@ -68,13 +70,18 @@ Eine Zeile in `CLAUDE.md` ist eine Bitte an das Modell. Ein Hook ist ein Schaltv
 
 ```bash
 # in einem Repo mit zwei Worktrees:
-echo '{"tool_input":{"command":"git commit -m x"}}' | scripts/block-shared-commit.sh
+echo '{"tool_input":{"command":"git commit -m x"}}' | bash scripts/block-shared-commit.sh
 # -> JSON mit "permissionDecision": "deny"
 
-# in einem Repo mit 13 unversionierten Dateien:
-scripts/warn-untracked-pile.sh
+# derselbe Befehl aus einem Worktree heraus - kommt durch:
+echo '{"tool_input":{"command":"git -C /pfad/zum/worktree commit -m x"}}' | bash scripts/block-shared-commit.sh
+
+# in einem Repo mit mehr als 12 unversionierten Dateien:
+bash scripts/warn-untracked-pile.sh
 # -> JSON mit "systemMessage"
 ```
+
+Beide Skripte sind gegen 20 Fälle getestet (ein und zwei Worktrees, `git -C`, `cd &&`, Env-Präfixe, `git -c` mit Leerzeichen im Wert, Heredocs, Commit-Nachrichten, die "git commit" enthalten, verwaiste Worktrees, Dateinamen mit Umlauten).
 
 ## Lizenz
 

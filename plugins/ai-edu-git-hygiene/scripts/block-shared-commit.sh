@@ -14,7 +14,7 @@
 #      den Weg, den er empfiehlt.
 #   3. Das Repo hat mehr als einen Worktree - nur dann existiert die Gefahr.
 #
-# Ausnahme: CLAUDE_ALLOW_SHARED_COMMIT=1
+# Ausnahme: CLAUDE_ALLOW_SHARED_COMMIT=1 - als Befehls-Prefix oder in der Umgebung.
 #
 # Bewusst kein Sicherheitsmechanismus, sondern ein Stolperdraht. Wer will, umgeht ihn.
 
@@ -29,16 +29,34 @@ cmd=$(printf '%s' "$payload" | jq -r '.tool_input.command // empty' 2>/dev/null)
 # Nur die erste Zeile betrachten.
 kopf=$(printf '%s' "$cmd" | head -1)
 
+# Der dokumentierte Abschalter wird als Befehls-Prefix geschrieben
+# (CLAUDE_ALLOW_SHARED_COMMIT=1 git commit ...). Er steht damit im Befehlstext, nicht in
+# der Umgebung dieses Hooks - beides prüfen.
+case "$kopf" in *CLAUDE_ALLOW_SHARED_COMMIT=1*) erlauben ;; esac
+
+# Env-Zuweisungen vor dem Befehl entfernen (VAR=wert git commit ...), sonst kommt jeder
+# Commit mit vorangestellter Variable ungeprüft durch.
+kopf=$(printf '%s' "$kopf" | sed -E 's/(^|[;&|][[:space:]]*)([[:space:]]*[A-Za-z_][A-Za-z0-9_]*=("[^"]*"|'"'"'[^'"'"']*'"'"'|[^[:space:]]*)[[:space:]]+)+/\1/g')
+
 # An einer Befehlsposition: Zeilenanfang oder direkt nach && || ; |
-printf '%s' "$kopf" \
+# Gequotete Abschnitte durch ein Zeichen ohne Leerzeichen ersetzen. Das erledigt zwei
+# Fälle auf einmal: `git -c user.name="A B" commit` wird erkannt (Leerzeichen im
+# Optionswert verstecken den Commit sonst), und `echo "a; git commit b"` löst keinen
+# Fehlalarm mehr aus, weil das Semikolon im String verschwindet.
+norm=$(printf '%s' "$kopf" | sed -E 's/"[^"]*"/Q/g; s/'"'"'[^'"'"']*'"'"'/Q/g')
+
+printf '%s' "$norm" \
   | grep -Eq '(^|[;&|][[:space:]]*)[[:space:]]*git([[:space:]]+-[^[:space:]]+([[:space:]]+[^[:space:]]+)?)*[[:space:]]+commit([[:space:]]|$)' \
   || erlauben
 
 [ "${CLAUDE_ALLOW_SHARED_COMMIT:-}" = "1" ] && erlauben
 command -v git >/dev/null 2>&1 || erlauben
 
-# Zielverzeichnis aufloesen: `git -C <pfad>` schlägt ein führendes `cd <pfad>`.
-ziel=$(printf '%s' "$kopf" | sed -n 's/.*git[[:space:]][[:space:]]*-C[[:space:]][[:space:]]*\([^[:space:];&|]*\).*/\1/p' | tail -1)
+# Zielverzeichnis auflösen: `git -C <pfad>` schlägt ein führendes `cd <pfad>`.
+# Erst gequotete Pfade (können Leerzeichen enthalten), dann ungequotete.
+ziel=$(printf '%s' "$kopf" | sed -n 's/.*git[[:space:]][[:space:]]*-C[[:space:]][[:space:]]*"\([^"]*\)".*/\1/p' | tail -1)
+[ -n "$ziel" ] || ziel=$(printf '%s' "$kopf" | sed -n 's/.*git[[:space:]][[:space:]]*-C[[:space:]][[:space:]]*\([^[:space:];&|]*\).*/\1/p' | tail -1)
+[ -n "$ziel" ] || ziel=$(printf '%s' "$kopf" | sed -n 's/^[[:space:]]*cd[[:space:]][[:space:]]*"\([^"]*\)".*/\1/p' | head -1)
 [ -n "$ziel" ] || ziel=$(printf '%s' "$kopf" | sed -n 's/^[[:space:]]*cd[[:space:]][[:space:]]*\([^[:space:];&|]*\).*/\1/p' | head -1)
 if [ -n "$ziel" ]; then
   ziel=${ziel%\"}; ziel=${ziel#\"}; ziel=${ziel%\'}; ziel=${ziel#\'}
@@ -53,11 +71,14 @@ git rev-parse --is-inside-work-tree >/dev/null 2>&1 || erlauben
 # fälschlich fehl - dann käme `cd src && ...` durch.
 gitdir=$(git rev-parse --path-format=absolute --git-dir 2>/dev/null) || erlauben
 commondir=$(git rev-parse --path-format=absolute --git-common-dir 2>/dev/null) || erlauben
-[ "$gitdir" = "$commondir" ] || erlauben          # verknuepfter Worktree: durchlassen
+[ "$gitdir" = "$commondir" ] || erlauben          # verknüpfter Worktree: durchlassen
 
-anzahl=$(git worktree list 2>/dev/null | wc -l | tr -d ' ')
+# Verwaiste Einträge (Verzeichnis gelöscht, `git worktree prune` nie gelaufen) zählen
+# nicht: sonst blockiert der Hook dauerhaft, obwohl keine zweite Session mehr existiert.
+anzahl=$(git worktree list --porcelain 2>/dev/null \
+         | awk '/^worktree /{w++} /^prunable/{p++} END{print (w>p ? w-p : 0)}')
 case "$anzahl" in ''|*[!0-9]*) erlauben ;; esac
-[ "$anzahl" -gt 1 ] || erlauben                   # nur ein Worktree: keine Gefahr
+[ "$anzahl" -gt 1 ] || erlauben                   # nur ein aktiver Worktree: keine Gefahr
 
 wurzel=$(git rev-parse --show-toplevel 2>/dev/null || printf '<repo>')
 

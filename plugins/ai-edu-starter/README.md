@@ -83,7 +83,7 @@ Die Datei `CLAUDE.md.template` ist ein ausfüllbares Memory-Template für Schwei
 
 ## Sprache und Konventionen
 
-Alle Skills und der Subagent sind auf **Deutsch (de-CH)** ausgelegt:
+Alle Skills und beide Subagents sind auf **Deutsch (de-CH)** ausgelegt:
 
 - Echte Umlaute ü/ö/ä, "ss" statt "ß"
 - Hyphen statt Em-Dash

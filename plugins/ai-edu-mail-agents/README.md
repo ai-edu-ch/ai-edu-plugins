@@ -8,12 +8,14 @@ Teil des [ai-edu.ch](https://ai-edu.ch) Plugin-Marketplaces.
 
 Wer in einem KMU jeden Morgen 80+ ungelesene Mails sortiert, jeden Freitag den Wochen-Status für die Geschäftsleitung schreibt, oder sicherstellen muss, dass A-Kundinnen und Behörden nie warten, kennt das Problem: Outlook gibt dir kein Werkzeug, das die ganze Inbox versteht, sondern nur einzelne Mails.
 
-Diese vier Agents arbeiten auf einem CSV-Export der Mailbox - vollständig lokal, ohne Live-API, ohne Mail-Versand. Sie geben dir strukturierte Markdown-Outputs, die du in Outlook oder einem Editor weiterverwendest.
+Diese vier Agents arbeiten auf einem CSV-Export der Mailbox: keine Anbindung an Outlook oder Gmail, kein Mail-Versand, keine Drittanbieter-Dienste. Gelesen und geschrieben wird nur im Ordner, in dem du Claude Code startest. Sie geben dir strukturierte Markdown-Outputs, die du in Outlook oder einem Editor weiterverwendest.
+
+**Zum Datenschutz, klar gesagt:** die Agents laufen in Claude Code, also gehen die Mail-Inhalte, die sie lesen, als Teil des Prompts an die Anthropic-API - wie bei jeder anderen Datei, die du Claude zeigst. "Lokal" heisst hier: keine zusätzliche Cloud, kein weiterer Anbieter, keine Kopie ausserhalb deines Ordners. Wer Mailinhalte gar nicht an ein Modell geben darf, ist mit diesen Agents falsch beraten - dann bleibt nur die Auswertung von Metadaten (Absender, Betreff, Datum) ohne Body-Spalte.
 
 | Agent | Zweck | Output-File |
 |---|---|---|
 | `mail-triage` | Inbox-CSV in 4 Buckets sortieren plus Eskalations-Alarm | `triage-<datum>.md` |
-| `mail-antwort-entwurf` | Antwort-Entwürfe im **deinem** Stil (lernt aus `sent.csv`) | `entwurf-NN-<slug>.md` |
+| `mail-antwort-entwurf` | Antwort-Entwürfe in **deinem** Stil (lernt aus `sent.csv`) | `entwurf-NN-<slug>.md` |
 | `mail-wochenrecap` | Sent + Inbox kombiniert: Zusagen, offene Punkte, Latenz | `wochenrecap-KW<NN>.md` |
 | `mail-vip-radar` | VIP-Liste vs. Inbox: SLA-Verletzungen + Eskalations-Risiko | `vip-radar-<datum>.md` |
 
@@ -43,7 +45,7 @@ Abgrenzung zum Skill `email-triage` im Plugin `ai-edu-starter`: der Skill bearbe
 ## Designprinzipien
 
 - **CSV statt PST** - das binäre Outlook-PST wird nicht direkt verarbeitet. "Speichern als CSV" oder Drittwerkzeug zur Konvertierung.
-- **Lokale Dateien, kein Cloud-Roundtrip** - die Agents lesen und schreiben in dem Ordner, in dem du Claude Code startest.
+- **Nur lokale Dateien, kein weiterer Anbieter** - die Agents lesen und schreiben in dem Ordner, in dem du Claude Code startest. Der Modellzugriff läuft über Anthropic wie in jeder Claude-Code-Sitzung (siehe Hinweis oben).
 - **Kein Mail-Versand, kein Mail-Löschen** - Output ist immer ein neues Markdown-File. Versand und Action bleiben manuell bei dir, in Outlook oder Gmail.
 - **Stil-Lernen aus deinen Sent-Mails** - `mail-antwort-entwurf` liest deinen Sent-Folder und imitiert Anrede, Schluss, Satzlänge, Tonalität. Keine generische ChatGPT-Tonalität.
 - **Ehrliche Grenzen** - jeder Agent dokumentiert Stolperfallen (Encoding, Zeitzone, Threading, BCC) und was er **nicht** kann.
@@ -97,6 +99,6 @@ MIT - siehe [LICENSE](../../LICENSE) im Repo-Root.
 
 ## Schulung und Setup-Begleitung
 
-Wenn du die Agents auf deine Mail-Workflow zuschneiden willst, eigene VIP-Klassen einführen oder MCP-Anbindung an Outlook/Gmail aufsetzen willst:
+Wenn du die Agents auf deinen Mail-Workflow zuschneiden willst, eigene VIP-Klassen einführen oder MCP-Anbindung an Outlook/Gmail aufsetzen willst:
 
 [Claude Code 1:1 Schulung](https://ai-edu.ch/pakete/claude-code/) - 90 Minuten remote, CHF 990.
