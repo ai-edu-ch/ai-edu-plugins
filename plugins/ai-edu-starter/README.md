@@ -1,6 +1,6 @@
 # ai-edu-starter
 
-19 Skills, 1 Subagent und CLAUDE.md-Template für Schweizer KMU, die Claude Code produktiv einsetzen wollen.
+18 Skills, 2 Subagents und CLAUDE.md-Template für Schweizer KMU, die Claude Code produktiv einsetzen wollen.
 
 Teil des [ai-edu.ch](https://ai-edu.ch) Plugin-Marketplaces.
 
@@ -70,17 +70,12 @@ Anschliessend `/reload-plugins` für sofortige Aktivierung ohne Neustart.
 | `/ai-edu-starter:quartalsziele` | Vorhaben zu max. 3 SMART-Zielen mit Streichliste |
 | `/ai-edu-starter:cold-outreach` | Erst-Kontakt-Mail + 2 Follow-ups für Tag 7 und 21 |
 
-### Advanced (benötigt Zusatz-Setup)
-
-| Skill | Zweck | Voraussetzungen |
-|-------|-------|------------------|
-| `/ai-edu-starter:council` | Multi-Modell-Second-Opinion für Strategie-Entscheidungen | MCP-Server + 3 API-Keys (OpenAI, Anthropic, Google) |
-
-**Zu `council`**: Nützt Strategie-Gabeln bei grösseren Investitionen, Rechtsform-Fragen, Expansionsentscheiden, Make-or-Buy. Benötigt einen separat aufgesetzten MCP-Server ([retolutz/llm-council](https://github.com/retolutz/llm-council)) und API-Accounts bei drei Anbietern. Das Setup ist nicht trivial - wird im [ai-edu.ch Modul-2-Workshop](https://ai-edu.ch) abgedeckt.
-
-## Enthaltener Subagent
+## Enthaltene Subagents
 
 - **`kundenkorrespondenz`** - spezialisiert auf Schweizer B2B-Kundenkorrespondenz. Kennt Sie-Form, formelle vs. halbformelle Register, CH-Konventionen.
+- **`linkedin-research`** - Mitbewerber-Panorama, Lead-Briefings und Jobmarkt-Signale von LinkedIn, strikt read-only: liest öffentliche Seiten in deiner eingeloggten Chrome-Session, sendet nie Nachrichten oder Kontaktanfragen, liked und kommentiert nicht. Schreibt ein laufend aktualisiertes Briefing (`linkedin-research-briefing.md`), damit bei einem Abbruch nichts verloren geht. **Voraussetzung:** die Browser-Erweiterung [Claude in Chrome](https://claude.com/chrome) ist installiert und LinkedIn ist in diesem Chrome eingeloggt. Outreach bleibt immer manuell bei dir.
+
+Abgrenzung zum Skill `email-triage`: der Skill bearbeitet eine einzelne eingefügte Mail. Wer eine ganze Mailbox als CSV auswerten will, nimmt das Plugin `ai-edu-mail-agents` aus demselben Marketplace.
 
 ## CLAUDE.md-Template
 
@@ -88,7 +83,7 @@ Die Datei `CLAUDE.md.template` ist ein ausfüllbares Memory-Template für Schwei
 
 ## Sprache und Konventionen
 
-Alle Skills und der Subagent sind auf **Deutsch (de-CH)** ausgelegt:
+Alle Skills und beide Subagents sind auf **Deutsch (de-CH)** ausgelegt:
 
 - Echte Umlaute ü/ö/ä, "ss" statt "ß"
 - Hyphen statt Em-Dash
@@ -103,13 +98,11 @@ Erste drei Skills zum Testen (alle laufen ohne Zusatz-Setup):
 2. `/ai-edu-starter:offerten-entwurf` mit einer Anfrage
 3. `/ai-edu-starter:wochen-review` am Freitagnachmittag
 
-Danach den Subagent `kundenkorrespondenz` aktivieren, wenn ein Kundenbrief ansteht.
-
-Den `council`-Skill erst angehen, wenn das MCP-Setup steht (Modul 2 oder Eigenregie).
+Danach den Subagent `kundenkorrespondenz` aktivieren, wenn ein Kundenbrief ansteht, und `linkedin-research` vor dem nächsten Akquise-Block.
 
 ## Support und Anpassung
 
-Das Starter-Kit läuft "as is" unter MIT-Lizenz. Für individuelles Setup-Coaching - eigene CLAUDE.md, zusätzliche Skills, MCP-Integration (inkl. Council), DSG-Rahmenwerk - gibt es den Modul-2-Workshop von ai-edu.ch:
+Das Starter-Kit läuft "as is" unter MIT-Lizenz. Für individuelles Setup-Coaching - eigene CLAUDE.md, zusätzliche Skills, MCP-Integration, DSG-Rahmenwerk - gibt es die Angebote von ai-edu.ch:
 
 https://ai-edu.ch
 
@@ -119,6 +112,7 @@ MIT - siehe [LICENSE](../../LICENSE).
 
 ## Versionen
 
+- **v0.4.0** (2026-08-23): +Subagent `linkedin-research` (read-only, via Claude in Chrome). Council-Skill entfernt: der verlinkte MCP-Server ist ohne Lizenz, seine Modelle sind veraltet und intern wird er nicht mehr eingesetzt - die eingebaute Zweitmeinung von Claude Code ersetzt ihn.
 - **v0.3.0** (2026-04-23): +Council-Skill (Advanced, mit MCP-Setup-Voraussetzung)
 - **v0.2.0** (2026-04-23): +15 neue Skills (Offerten, Finanzen, HR, Marketing, Planung)
 - **v0.1.0** (2026-04-23): Initial: 3 Skills + 1 Subagent + CLAUDE.md-Template

@@ -1,34 +1,98 @@
 {
   "name": "ai-edu",
   "owner": {
-    "name": "Reto Lutz"
+    "name": "Reto Lutz",
+    "url": "https://ai-edu.ch"
   },
   "metadata": {
     "description": "Plugin-Marketplace von ai-edu.ch für Schweizer KMU, die Claude Code produktiv einsetzen wollen.",
-    "version": "0.4.0"
+    "version": "0.5.0"
   },
   "plugins": [
     {
       "name": "ai-edu-starter",
       "source": "./plugins/ai-edu-starter",
-      "description": "19 Skills (inkl. Council-Orchestrierung), 1 Subagent und CLAUDE.md-Template für Schweizer KMU.",
-      "version": "0.3.0",
+      "description": "18 Skills, 2 Subagents (kundenkorrespondenz, linkedin-research) und CLAUDE.md-Template für den KMU-Alltag.",
+      "version": "0.4.0",
       "author": {
         "name": "Reto Lutz"
       },
       "license": "MIT",
-      "keywords": ["kmu", "schweiz", "de-ch", "productivity", "starter-kit"]
+      "category": "productivity",
+      "homepage": "https://github.com/ai-edu-ch/ai-edu-plugins/tree/main/plugins/ai-edu-starter",
+      "keywords": [
+        "kmu",
+        "schweiz",
+        "de-ch",
+        "productivity",
+        "starter-kit",
+        "linkedin",
+        "research"
+      ]
     },
     {
       "name": "ai-edu-mail-agents",
       "source": "./plugins/ai-edu-mail-agents",
-      "description": "Vier produktive Subagents für Mail-Bulk-Analyse aus Outlook- oder Gmail-CSV - Triage, Antwort-Entwürfe im Eigenstil, Wochenrecap, VIP-Radar.",
+      "description": "Vier Subagents für Mail-Bulk-Analyse aus Outlook- oder Gmail-CSV - Triage, Antwort-Entwürfe im Eigenstil, Wochenrecap, VIP-Radar. Versendet nichts.",
       "version": "0.1.0",
       "author": {
         "name": "Reto Lutz"
       },
       "license": "MIT",
-      "keywords": ["kmu", "schweiz", "de-ch", "outlook", "gmail", "email", "agents", "triage"]
+      "category": "productivity",
+      "homepage": "https://github.com/ai-edu-ch/ai-edu-plugins/tree/main/plugins/ai-edu-mail-agents",
+      "keywords": [
+        "kmu",
+        "schweiz",
+        "de-ch",
+        "outlook",
+        "gmail",
+        "email",
+        "agents",
+        "triage"
+      ]
+    },
+    {
+      "name": "ai-edu-git-hygiene",
+      "source": "./plugins/ai-edu-git-hygiene",
+      "description": "Zwei Hooks gegen Git-Unfälle mit parallelen Claude-Code-Sessions: kein Commit im geteilten Haupt-Arbeitsbaum, Warnung bei liegengelassenen unversionierten Dateien.",
+      "version": "0.1.0",
+      "author": {
+        "name": "Reto Lutz"
+      },
+      "license": "MIT",
+      "category": "development",
+      "homepage": "https://github.com/ai-edu-ch/ai-edu-plugins/tree/main/plugins/ai-edu-git-hygiene",
+      "keywords": [
+        "git",
+        "hooks",
+        "worktree",
+        "parallel-sessions",
+        "safety",
+        "de-ch"
+      ]
+    },
+    {
+      "name": "ai-edu-mcp-basis",
+      "source": "./plugins/ai-edu-mcp-basis",
+      "description": "Drei MCP-Server ohne Konto und API-Key (context7, chrome-devtools, playwright), fertig konfiguriert, plus Anleitung zu den vier Anschlusswegen.",
+      "version": "0.1.0",
+      "author": {
+        "name": "Reto Lutz"
+      },
+      "license": "MIT",
+      "category": "development",
+      "homepage": "https://github.com/ai-edu-ch/ai-edu-plugins/tree/main/plugins/ai-edu-mcp-basis",
+      "keywords": [
+        "mcp",
+        "context7",
+        "chrome-devtools",
+        "playwright",
+        "browser",
+        "docs",
+        "kmu",
+        "de-ch"
+      ]
     }
   ]
 }

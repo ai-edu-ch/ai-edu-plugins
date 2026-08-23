@@ -33,7 +33,7 @@ Dann nacheinander:
 Nutze den mail-vip-radar-Agent auf inbox.csv und sent.csv mit vips.csv als VIP-Liste. Zeitraum: letzte 14 Tage.
 ```
 
-Erwartet: 1-2 Hochrisiko (FINMA-Erinnerung kurz vor SLA-Verletzung, Lieferant B-Eskalation an CEO, Hausanwalt-Mahnstufe-2), 2-4 Mittelrisiko, 4-6 Niedrigrisiko, 5+ Erledigt.
+Erwartet: 3 Hochrisiko (FINMA-Erinnerung kurz vor SLA-Verletzung, Lieferant B mit Eskalation an den CEO, Hausanwalt Mahnstufe 2), dazu Mittel- und Niedrigrisiko sowie erledigte Fälle. Die genaue Aufteilung schwankt zwischen Läufen.
 
 ### 2. Triage - voller Inbox-Sweep
 
@@ -41,7 +41,7 @@ Erwartet: 1-2 Hochrisiko (FINMA-Erinnerung kurz vor SLA-Verletzung, Lieferant B-
 mail-triage auf inbox.csv.
 ```
 
-Erwartet: ~10 Aktion-heute (davon 2-3 Eskalation), ~25 Antwort-bis-Wochenende, ~80 FYI, ~25 Spam.
+Erwartet: rund 10 Aktion-heute (davon 2-3 Eskalation) und rund 25 Antwort-bis-Wochenende. Der grosse Rest der 234 Mails verteilt sich auf FYI und Spam; die vier Buckets zusammen ergeben immer 234.
 
 ### 3. Wochenrecap - GL-Status
 
@@ -57,7 +57,7 @@ Erwartet: ~10 erfüllte Zusagen, 3-5 offene Zusagen (davon 1-2 überfällig), 10
 Schreib mit mail-antwort-entwurf Antworten für die Top-3 aus triage-2026-05-08.md. Stilreferenz: sent.csv.
 ```
 
-Erwartet: 3 Markdown-Files mit Du-Anrede an etablierte Kontakte (Brunner, Fischer), Sie-Anrede an Behörden (FINMA, EDOEB), durchgängig "Liebe Grüsse" / "Freundliche Grüsse" je nach Anrede.
+Erwartet: 3 Markdown-Files mit Du-Anrede an etablierte Kontakte (Brunner, Fischer), Sie-Anrede an Behörden (FINMA, EDÖB), durchgängig "Liebe Grüsse" / "Freundliche Grüsse" je nach Anrede.
 
 ## Eingebaute Test-Szenarien
 
@@ -70,7 +70,7 @@ Erwartet: 3 Markdown-Files mit Du-Anrede an etablierte Kontakte (Brunner, Fische
 ### Mittelrisiko / SLA-grenzwertig
 
 - **Coaching-Anfrage Kunde C (Weber)** - mehrere offene Punkte (Vertrag finalisieren, Kickoff vorziehen)
-- **EDOEB Datenschutz-Nachfrage** - 72h SLA, knapp im Rahmen
+- **EDÖB Datenschutz-Nachfrage** - 72h SLA, knapp im Rahmen
 - **CEO Grosskunde** - möchte bei Vertragsunterzeichnung dabei sein, Termin offen
 
 ### Erfüllt (sollten als "abgehakt" auftauchen)
@@ -85,17 +85,22 @@ Erwartet: 3 Markdown-Files mit Du-Anrede an etablierte Kontakte (Brunner, Fische
 
 - **Threading**: 15+ Mail-Threads über Re:- und Fwd:-Subject erkennbar
 - **Stilreferenz**: Anrede gemischt Du/Sie je nach Kontakt, durchgängig de-CH (echte Umlaute, "ss" statt "ß")
-- **Newsletter / Spam**: ca. 25 Einträge (LinkedIn, Crypto, Phishing, Software-Newsletter, NZZ)
-- **VIP-Match**: ca. 35 Inbox-Einträge matchen `vips.csv` (Domain oder Adresse)
+- **Newsletter / Spam**: ca. 25 Einträge (LinkedIn, Crypto, Phishing, Software-Newsletter, Wirtschaftsblatt)
+- **VIP-Match**: 111 der 234 Inbox-Einträge matchen `vips.csv` (Adresse exakt oder Domain-Suffix). Der Radar priorisiert davon nach SLA und Signalen - nicht jeder Match ist ein Risiko.
 - **Werktag-Verteilung**: weniger Mails an Wochenenden, Spam zu allen Zeiten
-- **Out-of-Office-Replies**: 4 Stück in inbox (sollte vom Wochenrecap als "keine echte Antwort" erkannt werden)
+- **Out-of-Office-Replies**: 5 Stück mit "Out of Office" im Betreff, dazu 2 weitere Auto-Antworten (sollten vom Wochenrecap als "keine echte Antwort" erkannt werden)
 
 ## Was diese Daten NICHT sind
 
-- Echte Mails einer realen Person.
-- Echte Firmen- oder Personennamen (alle frei erfunden).
+- Echte Mails einer realen Person. Persona, Firmen, Personennamen und alle Vorgänge sind erfunden.
 - Reproduzierbare Outputs - Claude variiert Formulierung leicht zwischen Läufen.
-- Echte Behördenkorrespondenz. Die Behörden-Adressen nutzen reale Domains (edoeb.admin.ch, finma.ch, ahv.ch) mit frei erfundenen Lokalteilen; keine dieser Mails wurde je gesendet oder empfangen.
+
+Zu den Absender-Domains, damit hier keine Unklarheit bleibt:
+
+- **Behörden**: der Datensatz nutzt bewusst die realen Domains `finma.ch`, `edoeb.admin.ch`, `admin.ch`, `ahv-zh.ch`, `steuerverwaltung.zh.ch` und `kesb-zh.ch`, damit der Behörden-Radar an echten Mustern übt. Sämtliche Lokalteile, Absenderrollen, Fristen und Inhalte sind erfunden. **Keine dieser Mails wurde je gesendet oder empfangen, und keine der Behörden hat je eine der hier abgebildeten Aussagen gemacht.**
+- **Plattform-Benachrichtigungen** (GitHub, LinkedIn, AWS, Cloudflare, Kalender-Tools) stehen für die Klasse "automatische Benachrichtigung". Auch diese Mails sind erfunden.
+- **Alle übrigen Absender** - Kunden, Lieferanten, Partner, Hochschule, Presse - tragen erfundene Namen unter erfundenen Domains. Einzelne dieser `.ch`-Namen könnten trotzdem registriert sein; der Datensatz ist zum Lesen gedacht, nicht zum Versenden. Alle vier Agents versenden ausdrücklich nichts.
+- Spam und Phishing nutzen den nach RFC 2606 reservierten Namensraum `.example`.
 
 ## Eigene Daten verwenden
 

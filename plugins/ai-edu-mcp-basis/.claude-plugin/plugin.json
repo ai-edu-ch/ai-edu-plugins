@@ -1,0 +1,22 @@
+{
+  "name": "ai-edu-mcp-basis",
+  "version": "0.1.0",
+  "description": "Drei MCP-Server ohne Konto und ohne API-Key, fertig konfiguriert: context7 (aktuelle Bibliotheks-Doku), chrome-devtools (Website prüfen, Performance), playwright (Browser steuern). Plus Anleitung, welcher Weg wofür.",
+  "author": {
+    "name": "Reto Lutz",
+    "url": "https://ai-edu.ch"
+  },
+  "homepage": "https://ai-edu.ch",
+  "repository": "https://github.com/ai-edu-ch/ai-edu-plugins",
+  "license": "MIT",
+  "keywords": [
+    "mcp",
+    "context7",
+    "chrome-devtools",
+    "playwright",
+    "browser",
+    "docs",
+    "kmu",
+    "de-ch"
+  ]
+}

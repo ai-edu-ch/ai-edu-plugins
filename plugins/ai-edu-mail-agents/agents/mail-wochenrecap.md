@@ -46,7 +46,7 @@ CSV-Spalten siehe `mail-triage`-Agent (gleiches Schema).
    - Offen: Zusage ohne Erfüllung, Fällig-Datum noch nicht erreicht.
    - **Überfällig**: Zusage ohne Erfüllung, Fällig-Datum vorbei.
 5. **Inbox-Open-Loops** - Mails an dich, die du noch nicht beantwortet hast (kein Re: in sent zur Thread-ID).
-6. **Eskalations-Check** - identische Mahnsignale wie in `mail-triage` (deadline, Mahnstufe, CC-Vorgesetzt:e).
+6. **Eskalations-Check** - identische Mahnsignale wie in `mail-triage` (deadline, Mahnstufe, CC an Vorgesetzte).
 7. **Latenz-Statistik** - Median + 90. Perzentil deiner Antwortzeit, plus Top-3 langsamste Threads.
 8. **Output schreiben** - Markdown nach Schema unten.
 
@@ -99,6 +99,7 @@ Datei: `wochenrecap-KW<NN>.md` im aktuellen Ordner.
 
 | Domain | Inbox | Sent | Median-Latenz | Offene Punkte |
 |--------|-------|------|---------------|---------------|
+| <domain> | <n> | <n> | <h>h | <kurz> |
 
 ## Themen-Cluster
 
