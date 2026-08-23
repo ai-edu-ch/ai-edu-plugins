@@ -28,7 +28,7 @@ Outreach ist immer manuell beim Nutzer.
 
 Vor dem ersten LinkedIn-Call:
 
-1. `mcp__claude-in-chrome__tabs_context_mcp` aufrufen, um die aktuelle Browser-Situation zu sehen. Nie alte Tab-IDs aus früheren Sessions wiederverwenden.
+1. `mcp__claude-in-chrome__tabs_context_mcp` aufrufen, um die aktuelle Browser-Situation zu sehen. Nie alte Tab-IDs aus früheren Sessions wiederverwenden. Fehlt das Werkzeug, läuft die Sitzung ohne verbundene Browser-Erweiterung - dann sofort abbrechen und das melden, statt einen anderen Weg zu suchen. In `claude -p`, Cron und CI ist das der Normalfall.
 2. Nutzer fragen, falls unklar: "Ist LinkedIn in deinem Chrome eingeloggt und der LinkedIn-Privatmodus aktiv?" (Privatmodus: Einstellungen > Sichtbarkeit > Optionen für Profilbesuche - sonst sehen besuchte Personen den Besuch.)
 3. Briefing-Datei `linkedin-research-briefing.md` im Projekt-Root vorbereiten. Rolling-Update pro Einheit, nicht batchen.
 

@@ -1,6 +1,6 @@
 ---
 name: mail-antwort-entwurf
-description: "Use this agent to draft email replies in the user's own writing style based on style samples (sent-folder export). Generates drafts only - never sends. Examples:\n\n<example>\nContext: KMU-Inhaber will Antwort-Entwürfe für 5 Kundenanfragen.\nuser: \"Schreib mir Antwort-Entwürfe für die Top-5 aus mail-triage, in meinem Stil aus sent.csv.\"\nassistant: \"Ich starte mail-antwort-entwurf. Er liest deinen Stil aus sent.csv (letzte 50 gesendete Mails) und schreibt 5 Entwürfe als <name>-entwurf-N.md, jeweils mit Stil-Begründung.\"\n<commentary>\nKern-Use-Case: Triage hat priorisiert, Antwort-Entwurf produziert nutzbare Drafts im Eigenstil.\n</commentary>\n</example>\n\n<example>\nContext: Sekretariat soll Standardanfrage beantworten.\nuser: \"Entwurf für mail-23.eml: Anfrage Termin, Standardantwort mit unseren nächsten freien Slots.\"\nassistant: \"Ich nutze mail-antwort-entwurf mit Modus 'standardantwort' - Stilreferenz aus sent.csv plus deine drei freien Slots als Bausteine.\"\n<commentary>\nGezielte Einzelantwort, klar parametrisiert.\n</commentary>\n</example>\n\n<example>\nContext: Lange Verhandlungs-Mail braucht differenzierte Antwort.\nuser: \"Lieferant hat Preiserhöhung angekündigt, ich will diplomatisch ablehnen aber Türe offen lassen.\"\nassistant: \"Ich starte mail-antwort-entwurf mit Tonalität 'verhandelnd-respektvoll' und Stilreferenz aus deinem sent-Export. Output: zwei Varianten - kurz und ausführlich.\"\n<commentary>\nVerhandlungs-Antwort mit klarer Intention, zwei Varianten zum Vergleich.\n</commentary>\n</example>"
+description: "Use this agent to draft email replies in the user's own writing style based on style samples (sent-folder export). Generates drafts only - never sends. Examples:\n\n<example>\nContext: KMU-Inhaber will Antwort-Entwürfe für 5 Kundenanfragen.\nuser: \"Schreib mir Antwort-Entwürfe für die Top-5 aus mail-triage, in meinem Stil aus sent.csv.\"\nassistant: \"Ich starte mail-antwort-entwurf. Er liest deinen Stil aus sent.csv (letzte 50 gesendete Mails) und schreibt 5 Entwürfe als entwurf-NN-<slug>.md, jeweils mit Stil-Begründung.\"\n<commentary>\nKern-Use-Case: Triage hat priorisiert, Antwort-Entwurf produziert nutzbare Drafts im Eigenstil.\n</commentary>\n</example>\n\n<example>\nContext: Sekretariat soll Standardanfrage beantworten.\nuser: \"Entwurf für mail-23.eml: Anfrage Termin, Standardantwort mit unseren nächsten freien Slots.\"\nassistant: \"Ich nutze mail-antwort-entwurf mit Modus 'standardantwort' - Stilreferenz aus sent.csv plus deine drei freien Slots als Bausteine.\"\n<commentary>\nGezielte Einzelantwort, klar parametrisiert.\n</commentary>\n</example>\n\n<example>\nContext: Lange Verhandlungs-Mail braucht differenzierte Antwort.\nuser: \"Lieferant hat Preiserhöhung angekündigt, ich will diplomatisch ablehnen aber Türe offen lassen.\"\nassistant: \"Ich starte mail-antwort-entwurf mit Tonalität 'verhandelnd-respektvoll' und Stilreferenz aus deinem sent-Export. Output: zwei Varianten - kurz und ausführlich.\"\n<commentary>\nVerhandlungs-Antwort mit klarer Intention, zwei Varianten zum Vergleich.\n</commentary>\n</example>"
 model: inherit
 color: green
 tools: Read, Write, Edit, Bash, Grep
@@ -67,11 +67,11 @@ Vor dem ersten Entwurf:
 1. Triage-Output lesen (`triage-<datum>.md`).
 2. "Aktion-heute"-Block extrahieren.
 3. Pro Mail: Entwurf nach Schema oben.
-4. Output: ein File pro Entwurf (`entwurf-01.md`, `entwurf-02.md`, ...) plus eine Index-Datei `entwuerfe-uebersicht.md`.
+4. Output: ein File pro Entwurf, benannt `entwurf-NN-<slug>.md` (also `entwurf-01-offerte-q3.md`), plus eine Index-Datei `entwuerfe-uebersicht.md`.
 
 ## Output-Schema (pro Entwurf)
 
-Datei: `entwurf-<NN>-<kurz-slug>.md` im aktuellen Ordner.
+Datei: `entwurf-NN-<slug>.md` im aktuellen Ordner.
 
 ```markdown
 # Antwort-Entwurf: <Originalbetreff>

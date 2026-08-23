@@ -99,7 +99,7 @@ Zu den Absender-Domains, damit hier keine Unklarheit bleibt:
 
 - **Behörden**: der Datensatz nutzt bewusst die realen Domains `finma.ch`, `edoeb.admin.ch`, `admin.ch`, `ahv-zh.ch`, `steuerverwaltung.zh.ch` und `kesb-zh.ch`, damit der Behörden-Radar an echten Mustern übt. Sämtliche Lokalteile, Absenderrollen, Fristen und Inhalte sind erfunden. **Keine dieser Mails wurde je gesendet oder empfangen, und keine der Behörden hat je eine der hier abgebildeten Aussagen gemacht.**
 - **Plattform-Benachrichtigungen** (GitHub, LinkedIn, AWS, Cloudflare, Kalender-Tools) stehen für die Klasse "automatische Benachrichtigung". Auch diese Mails sind erfunden.
-- **Alle übrigen Absender** - Kunden, Lieferanten, Partner, Hochschule, Presse - tragen erfundene Namen unter erfundenen Domains. Einzelne dieser `.ch`-Namen könnten trotzdem registriert sein; der Datensatz ist zum Lesen gedacht, nicht zum Versenden. Alle vier Agents versenden ausdrücklich nichts.
+- **Alle übrigen Absender** - Kunden, Lieferanten, Partner, Hochschule, Presse - tragen erfundene Namen unter erfundenen Domains. Am 23.08.2026 wurde jede Domain im Datensatz per `dig` auf A- und MX-Record geprüft: ausser den oben genannten Behörden löst keine auf. Wer den Korpus erweitert, prüft neue Namen genauso - sechs ursprünglich frei erfundene Namen waren real registriert und mussten ersetzt werden.
 - Spam und Phishing nutzen den nach RFC 2606 reservierten Namensraum `.example`.
 
 ## Eigene Daten verwenden

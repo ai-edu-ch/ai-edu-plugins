@@ -32,6 +32,18 @@ Anschliessend `/reload-plugins` für sofortige Aktivierung ohne Neustart.
 
 Die Agents werden danach von Claude Code automatisch aufgerufen, wenn der Use-Case zum `description`-Feld passt - oder explizit per *"Nutze den `mail-triage`-Agent auf `inbox.csv`."*.
 
+## Was die Agents dürfen, und was nicht
+
+Sie bekommen `Read`, `Write`, `Edit`, `Grep` und `Bash`. Bash brauchen sie tatsächlich: Zeilen zählen, Zeichensatz prüfen, eine grosse CSV mit `python3` in Häppchen parsen.
+
+Damit ist "versendet nichts" eine Anweisung im Systemprompt jedes Agents, keine technische Sperre. Was sie hält:
+
+- Die Agents bekommen **keine Zugangsdaten** zu deiner Mailbox - sie sehen nur die CSV, die du exportiert hast.
+- Es ist **kein SMTP-, IMAP- oder Graph-Werkzeug** eingebunden; ein Versand müsste über ein Kommando laufen, das im Prompt ausdrücklich verboten ist.
+- Alle vier Agents haben den Versand als Verbot im Text, nicht als Nebensatz.
+
+Wer eine harte Grenze statt einer Anweisung will, startet Claude Code für diese Aufgabe im Plan-Modus oder entzieht `Bash` in einer eigenen Kopie der Agent-Datei - dann fällt allerdings die Verarbeitung grosser CSV-Dateien weg.
+
 ## Voraussetzungen
 
 - **Outlook** oder **Gmail**, mit Möglichkeit, Mails als CSV zu exportieren.
@@ -66,7 +78,7 @@ Typischer Workflow eines Schweizer KMU am Montagmorgen:
    → Du siehst: Hochrisiko: 1 Behördenmail, SLA-verletzt
 3. mail-triage (auf inbox.csv) → triage-2026-05-08.md
    → Aktion-heute: 7 Mails, davon 3 Eskalation
-4. mail-antwort-entwurf (für die Top-3) → entwurf-01.md, entwurf-02.md, entwurf-03.md
+4. mail-antwort-entwurf (für die Top-3) → entwurf-01-<slug>.md, entwurf-02-<slug>.md, entwurf-03-<slug>.md
    → Drei Entwürfe in deinem Stil, du kopierst und versendest manuell
 ```
 
