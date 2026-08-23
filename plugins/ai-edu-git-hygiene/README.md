@@ -31,7 +31,9 @@ Blockiert er, erklärt die Meldung den Ausweg: eigener Worktree, `git -C <worktr
 
 **Abschalten.** `CLAUDE_ALLOW_SHARED_COMMIT=1 git commit ...` lässt den Commit bewusst durch - als Befehls-Präfix oder als Variable in der Umgebung des Hooks. Der Hook ist ein Stolperdraht, keine Sicherheitsgrenze.
 
-**Was er nicht kann.** Der Hook liest den Befehlstext, er parst keine Shell. Gequotete Abschnitte werden vor der Prüfung neutralisiert, damit `echo "a; git commit b"` keinen Fehlalarm auslöst und `git -c user.name="A B" commit` trotzdem erkannt wird. Aber: mehrzeilige Befehle prüft er nur in der ersten Zeile (bewusst, wegen Heredocs), und ein Commit, den ein aufgerufenes Skript im Inneren absetzt, sieht er nicht. Verwaiste Worktree-Einträge (`prunable`) zählt er nicht mit, sonst blockierte er dauerhaft, nachdem jemand ein Worktree-Verzeichnis gelöscht hat, ohne `git worktree prune` zu laufen.
+**Was er nicht kann.** Der Hook liest den Befehlstext, er parst keine Shell. Gequotete Abschnitte werden vor der Prüfung neutralisiert, damit `echo "a; git commit b"` keinen Fehlalarm auslöst und `git -c user.name="A B" commit` trotzdem erkannt wird. Aber: mehrzeilige Befehle prüft er nur in der ersten Zeile (bewusst, wegen Heredocs), und ein Commit, den ein aufgerufenes Skript im Inneren absetzt, sieht er nicht.
+
+Die praktisch häufigste Einschränkung: **Shell-Variablen in Pfaden löst er nicht auf.** Bei `git -C "$ZIEL" commit` sieht der Hook den Text `$ZIEL`, findet dort kein Verzeichnis und bleibt beim aktuellen - hat das mehrere Worktrees, blockiert er, obwohl der Commit in einem eigenen Worktree gelandet wäre. Gemessen, nicht vermutet. Wer in Skripten mit Variablenpfaden committet, schreibt den Pfad aus oder stellt `CLAUDE_ALLOW_SHARED_COMMIT=1` voran. Ein Fehlalarm kostet einen zweiten Anlauf; die umgekehrte Richtung - ein durchgelassener Commit auf fremder Arbeit - kostet mehr. Verwaiste Worktree-Einträge (`prunable`) zählt er nicht mit, sonst blockierte er dauerhaft, nachdem jemand ein Worktree-Verzeichnis gelöscht hat, ohne `git worktree prune` zu laufen.
 
 ## Hook 2: Warnung bei liegengelassenen Dateien
 
