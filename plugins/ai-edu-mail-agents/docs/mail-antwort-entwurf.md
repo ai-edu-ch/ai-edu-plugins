@@ -51,7 +51,7 @@ Schreib mit mail-antwort-entwurf Antworten für die Top-3 aus triage-2026-05-08.
 ```
 mail-antwort-entwurf für die Termin-Anfrage von claudia@firma.ch.
 Sent.csv als Stilreferenz.
-Bausteine: meine freien Slots Mo 14:00, Di 10:00, Do 9:00. Bestätigung über cal.com/ai-edu.
+Bausteine: meine freien Slots Mo 14:00, Di 10:00, Do 9:00. Bestätigung über meinen Buchungslink <dein-link>.
 ```
 
 **Verhandlungs-Antwort, zwei Varianten:**
@@ -68,9 +68,9 @@ Eine Datei pro Entwurf: `entwurf-NN-<kurz-slug>.md`. Beispiel-Auszug:
 ```markdown
 # Antwort-Entwurf: Re: Offerte Q3 - Rückfrage
 
-**An:** claudia@grosskunde.ch
+**An:** claudia.brunner@grosskunde-ag.ch
 **Betreff:** Re: Offerte Q3 - Rückfrage
-**Stil-Quelle:** sent.csv (Anrede: "Liebe Claudia" + Du, Schluss: "Liebe Grüsse, Reto", Sprache: de-CH)
+**Stil-Quelle:** sent.csv (Anrede: "Liebe Claudia" + Du, Schluss: "Liebe Grüsse, Anna", Sprache: de-CH)
 **Tonalität:** sachlich
 
 ---
@@ -78,17 +78,17 @@ Eine Datei pro Entwurf: `entwurf-NN-<kurz-slug>.md`. Beispiel-Auszug:
 Liebe Claudia
 
 Danke für deine Rückfrage. Du hast Recht: Position 4 in der Offerte ist tatsächlich
-ohne Reisekosten ausgewiesen, weil wir das normalerweise pauschal ausweisen.
+ohne Reisekosten ausgewiesen, weil ich das normalerweise pauschal ausweise.
 
 Wenn der Workshop bei euch in Zürich stattfindet, sind Reisekosten bei mir
-inbegriffen. Bei Standorten ausserhalb des Grossraums Zürich kommen typischerweise
-CHF 150-350 dazu, je nach Region.
+inbegriffen. Bei Standorten ausserhalb des Grossraums Zürich kommt eine
+Pauschale dazu, gestaffelt nach Region.
 
 Soll ich die Offerte mit der Pauschale für Zürich neu rausschicken, oder
 brauchst du den Standort-Vorbehalt?
 
 Liebe Grüsse
-Reto
+Anna
 
 ---
 

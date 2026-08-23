@@ -38,6 +38,8 @@ Die Agents werden danach von Claude Code automatisch aufgerufen, wenn der Use-Ca
 
 Keine Live-Anbindung an Outlook oder Gmail nötig. Keine MCP-Konfiguration zwingend.
 
+Abgrenzung zum Skill `email-triage` im Plugin `ai-edu-starter`: der Skill bearbeitet eine einzelne eingefügte Mail, die Agents hier arbeiten auf dem Massenexport einer ganzen Mailbox.
+
 ## Designprinzipien
 
 - **CSV statt PST** - das binäre Outlook-PST wird nicht direkt verarbeitet. "Speichern als CSV" oder Drittwerkzeug zur Konvertierung.
@@ -85,7 +87,7 @@ Detaillierte READMEs mit Beispiel-Prompts, Input-Schemas, Output-Beispielen und 
 
 ## Beispiel-Datensatz
 
-In [`examples/`](examples/) liegt ein anonymisierter, fiktiver 2-Wochen-Mail-Korpus (`inbox.csv`, `sent.csv`, `vips.csv`), mit dem du alle vier Agents end-to-end testen kannst, ohne eigene Mails zu exportieren. Persona: Anna Beispiel, KMU-Beraterin Zuerich. 234 Inbox-Mails, 94 Sent-Mails, 25 VIPs, eingebaute Eskalations-Treppe (Lieferant-Reklamation, FINMA-Anfrage, Hausanwalt-Mahnung), erfuellte Threads (Offerte Q3, Workshop) und ca. 25 Spam-Mails.
+In [`examples/`](examples/) liegt ein anonymisierter, fiktiver 2-Wochen-Mail-Korpus (`inbox.csv`, `sent.csv`, `vips.csv`), mit dem du alle vier Agents end-to-end testen kannst, ohne eigene Mails zu exportieren. Persona: Anna Beispiel, KMU-Beraterin Zürich. 234 Inbox-Mails, 94 Sent-Mails, 25 VIPs, eingebaute Eskalations-Treppe (Lieferant-Reklamation, FINMA-Anfrage, Hausanwalt-Mahnung), erfüllte Threads (Offerte Q3, Workshop) und ca. 25 Spam-Mails.
 
 Anleitung: [`examples/README.md`](examples/README.md).
 

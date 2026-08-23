@@ -1,15 +1,15 @@
 Adresse_oder_Domain,Kategorie,SLA_Stunden,Notiz
-claudia.brunner@grosskunde-ag.ch,A-Kunde,8,Geschaeftsleitung Grosskunde A - Eskalations-Sponsor
+claudia.brunner@grosskunde-ag.ch,A-Kunde,8,Geschäftsleitung Grosskunde A - Eskalations-Sponsor
 @grosskunde-ag.ch,A-Kunde,24,Domain-weit Grosskunde A
 peter.weber@kunde-c.ch,A-Kunde,24,Coaching-Mandat seit 2024
 @kunde-c.ch,A-Kunde,48,Domain-weit Kunde C
 markus.fischer@beratungsmandat-d.ch,A-Kunde,24,Prozess-Mandat 2026
-@finma.ch,Behoerde,48,Aufsichtsbehoerde
-@edoeb.admin.ch,Behoerde,72,Datenschutzbeauftragter Bund
-@ahv-zh.ch,Behoerde,72,AHV-Ausgleichskasse Zuerich
-@steuerverwaltung.zh.ch,Behoerde,72,Kantonale Steuerverwaltung ZH
-@kesb-zh.ch,Behoerde,48,KESB Zuerich (selten relevant aber Pflicht)
-@admin.ch,Behoerde,72,Bundesverwaltung allgemein
+@finma.ch,Behörde,48,Aufsichtsbehörde
+@edoeb.admin.ch,Behörde,72,Datenschutzbeauftragter Bund
+@ahv-zh.ch,Behörde,72,AHV-Ausgleichskasse Zürich
+@steuerverwaltung.zh.ch,Behörde,72,Kantonale Steuerverwaltung ZH
+@kesb-zh.ch,Behörde,48,KESB Zürich (selten relevant aber Pflicht)
+@admin.ch,Behörde,72,Bundesverwaltung allgemein
 mueller@kanzlei-zh.ch,Recht,24,Hausanwalt
 @kanzlei-zh.ch,Recht,48,Hausanwalts-Kanzlei
 @anwalt-mueller.ch,Recht,24,Backup-Kontakt Hausanwalt
@@ -17,10 +17,10 @@ mueller@lieferant-b.ch,Lieferant-Top10,24,Software-Hauptlieferant - Reklamations
 @lieferant-b.ch,Lieferant-Top10,48,Domain-weit Lieferant B
 billing@cloudtools.ch,Lieferant-Top10,72,Software-Lizenzen monatlich
 support@itservice.ch,Lieferant-Top10,48,IT-Wartung und Support
-hello@reisecenter-zh.ch,Lieferant-Top10,72,Reise-Buchungen Geschaeft
+hello@reisecenter-zh.ch,Lieferant-Top10,72,Reise-Buchungen Geschäft
 buchhaltung@treuhand-bach.ch,Buchhaltung,48,Externe Buchhalterin
 quartal@steuerberater-frey.ch,Buchhaltung,72,Steuerberater
 @hslu.ch,Partner,72,Hochschule Luzern - Lehrauftrag
 @switch.ch,Partner,72,Switch IT-Infrastruktur
 laura.koch@partnerin-coach.ch,Partner,24,Co-Trainerin Coaching-Programme
-markus.eberhard@netzwerk-kmu.ch,Partner,72,KMU-Netzwerk Praesidium
+markus.eberhard@netzwerk-kmu.ch,Partner,72,KMU-Netzwerk Präsidium
