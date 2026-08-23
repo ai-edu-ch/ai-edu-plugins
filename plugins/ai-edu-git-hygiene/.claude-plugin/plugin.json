@@ -1,0 +1,20 @@
+{
+  "name": "ai-edu-git-hygiene",
+  "version": "0.1.0",
+  "description": "Zwei Hooks gegen die häufigsten Git-Unfälle mit parallelen Claude-Code-Sessions: kein Commit im geteilten Haupt-Arbeitsbaum, Warnung bei liegengelassenen unversionierten Dateien.",
+  "author": {
+    "name": "Reto Lutz",
+    "url": "https://ai-edu.ch"
+  },
+  "homepage": "https://ai-edu.ch",
+  "repository": "https://github.com/ai-edu-ch/ai-edu-plugins",
+  "license": "MIT",
+  "keywords": [
+    "git",
+    "hooks",
+    "worktree",
+    "parallel-sessions",
+    "safety",
+    "de-ch"
+  ]
+}

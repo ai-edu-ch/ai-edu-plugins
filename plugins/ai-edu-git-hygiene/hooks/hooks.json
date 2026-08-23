@@ -1,0 +1,29 @@
+{
+  "description": "Git-Hygiene für parallele Claude-Code-Sessions: blockiert Commits im geteilten Haupt-Arbeitsbaum, meldet liegengelassene unversionierte Dateien.",
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "\"${CLAUDE_PLUGIN_ROOT}\"/scripts/block-shared-commit.sh",
+            "timeout": 10,
+            "statusMessage": "Arbeitsbaum prüfen"
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "\"${CLAUDE_PLUGIN_ROOT}\"/scripts/warn-untracked-pile.sh",
+            "timeout": 10
+          }
+        ]
+      }
+    ]
+  }
+}
